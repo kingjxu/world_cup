@@ -105,11 +105,12 @@ export default {
       this.$axios.get('http://ddbaby.site/world_cup/match_list', {
         params: Object.assign(params),
       }).then((res) => {
-        this.match_list_data = res;
+        this.match_list_data = res.match_list;
         // 默认选择第一个日期
-        if (Object.keys(res).length > 0 && !this.selectedDate) {
-          this.selectedDate = Object.keys(res)[0];
+        if (Object.keys(res.match_list).length > 0 && !this.selectedDate) {
+          this.selectedDate = Object.keys(res.match_list)[0];
         }
+        console.log("matchlist created",this.selectedDate);
       }).catch((err) => {
         showToast(err.message || err);
       });
@@ -129,6 +130,7 @@ export default {
     },
   },
   created() {
+    console.log("matchlist created");
     this.getMatchList(this.$route.query);
   },
 };
@@ -230,7 +232,7 @@ export default {
 .team-icon {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0;
   margin: 0 12px;
 }
 

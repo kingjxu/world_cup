@@ -5,10 +5,17 @@ import createorderView from '../views/createorder.vue';
 import checkorderView from '../views/checkorder.vue';
 import paysuccessView from '../views/paysuccess.vue';
 import paycancelView from '../views/paycancel.vue';
+import matchlist from '../views/matchlist.vue';
 
 const router = createRouter({
-  history: createWebHashHistory('/dist/'),
+  history: createWebHashHistory(),
   routes: [
+    {
+      path: '/match_list',
+      name: 'matchlist',
+      meta: { title: '比赛列表' },
+      component: matchlist,
+    },
     {
       path: '/test',
       name: 'test',
@@ -21,7 +28,7 @@ const router = createRouter({
         { path: 'paycancel', meta: { title: '支付页' }, name: 'paycancel', component: paycancelView },
       ],
     },
-    { path: '/', redirect: '/test' }
+    { path: '/', redirect: '/test' },
   ],
 });
 
